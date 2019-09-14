@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="ja"><head prefix="og: http://ogp.me/ns#"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>「代替」の意味を探して</title><meta name="description" content="HTMLにおける「代替」とは何なのか。代替テキスト・アクセシビリティツリー・文書構造とプレゼンテーションの分離などについて。"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="「代替」の意味を探して"><meta property="og:type" content="article"><meta property="og:image" content="https://yuheiy.github.io/meanings-of-the-alternative/assets/meanings-of-the-alternative.001.png"><meta property="og:url" content="https://yuheiy.github.io/meanings-of-the-alternative/"><meta property="og:description" content="HTMLにおける「代替」とは何なのか。代替テキスト・アクセシビリティツリー・文書構造とプレゼンテーションの分離などについて。"><meta property="og:locale" content="ja_JP"><link rel="canonical" href="https://yuheiy.github.io/meanings-of-the-alternative/"><link rel="stylesheet" href="/meanings-of-the-alternative/assets/main.css"></head><body><div class="stack -xlarge"><div class="stack -large"><header class="center"><div class="stack -small"><p>社内発表（<time datetime="2018-09-10">2019年9月10日</time>）</p><h1>「代替」の意味を探して</h1><p>HTMLにおける「代替」とは何なのか。代替テキスト・アクセシビリティツリー・文書構造とプレゼンテーションの分離などについて。</p></div></header><footer class="center"><address>発表者：<a href="https://yuheiy.com/" rel="author">安田祐平</a></address></footer></div><main class="stack -xlarge"><section id="1">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.001.png" width="1920" height="1080" alt="「代替」の意味を探して" decoding="async" loading="lazy"></div>
+</figure>
+<p>HTMLにおける「代替」の意味について考えてみます。</p>
+</section>
+<section id="2">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.002.png" width="1920" height="1080" alt="<img src=&#34;logo.svg&#34; alt=&#34;SHIFTBRAIN Inc.&#34;>" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>代替テキストのマークアップ例</p></div>
+</figcaption>
+</figure>
+<p>HTMLには画像に「代替テキスト」と呼ばれる値を設定する機能があります。</p>
+<p>ユーザーがもし画像を利用できない状況にあるとき、画像の代わりにこの代替テキストが提供されます。</p>
+</section>
+<section id="3">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.003.png" width="1920" height="1080" alt="画像の読み込み失敗時、ブラウザには画像が破損したアイコンと共に代替テキストの値が文字として表示されます。" decoding="async" loading="lazy"></div>
+</figure>
+<p>画像のパスが間違っていたり、ページの読み込みが途中で中断されてしまったりしてデータをうまく読み込めない場面はたまにあります。そういったとき、この代替テキストの値が画像の代わりに表示されます。</p>
+<p>通信状況が悪いときや、画像が表示されないまま長い間更新されなくなったサイトを閲覧しているときでも、適切な代替テキストが設定されていれば最低限の情報は得られます。</p>
+</section>
+<section id="4">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.004.png" width="1920" height="1080" alt="支援技術のひとつであるVoiceOverというスクリーンリーダーでは、HTMLの画像にフォーカスすると「SHIFTBRAIN Inc.、イメージ」というポップアップが表示され、同じ内容が読み上げられます。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p><a href="https://www.apple.com/jp/accessibility/mac/vision/">視覚のアクセシビリティ - Mac - Apple（日本）</a></p></div>
+</figcaption>
+</figure>
+<p>支援技術を利用してサイトを閲覧しているユーザーにもこの代替テキストが提供されます。</p>
+<p>支援技術というのは、主に障害者がパソコン利用の際に、操作の補助を行うために併用されるハードウェアとかソフトウェアです。</p>
+<p>支援技術のひとつであるスクリーンリーダーを利用すると、画面上の情報をコンピュータに読み上げさせることができて、HTMLの画像にフォーカスすると代替テキストの値が読み上げられます。</p>
+<p>スクリーンリーダーは全盲のユーザーやロービジョンのユーザーによく利用されます。</p>
+</section>
+<section id="5">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.005.png" width="1920" height="1080" alt="それに見合う他のもので代えること。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://kotobank.jp/word/代替-557717">代替(ダイタイ)とは - コトバンク</a></cite></p></div>
+</figcaption>
+</figure>
+<p>ところで「代替」という言葉はあまり耳慣れないかもしれません。辞書的な意味の定義は<q cite="https://kotobank.jp/word/代替-557717">それに見合う他のもので代えること。</q>であるそうです。</p>
+<p>支援技術の話と関連して、アクセシビリティの文脈ではこの「代替」をどのように考えるかの議論が常にあり、何をもって代替とするかが永遠のテーマです。</p>
+</section>
+<section id="6">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.006.png" width="1920" height="1080" alt="すべての画像をその画像のalt属性のテキストと置換してもページの意味を変えないことを意図する。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://momdo.github.io/html/images.html#alt">4.8.4.4 画像に対して代替として動作するテキストを提供に対する要件 § HTML Standard 日本語訳</a></cite></p></div>
+</figcaption>
+</figure>
+<p>代替テキストの書き方についてHTMLの仕様書では、<q cite="https://momdo.github.io/html/images.html#alt">すべての画像をその画像の<code>alt</code>属性のテキストと置換してもページの意味を変えないことを意図する。</q>とあります。</p>
+</section>
+<section id="7">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.007.png" width="1920" height="1080" alt="代替テキストは、もし画像を含めることができなかったならば、何が書かれていただろうかを考慮することで記述することができる。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://momdo.github.io/html/images.html#alt">4.8.4.4 画像に対して代替として動作するテキストを提供に対する要件 § HTML Standard 日本語訳</a></cite></p></div>
+</figcaption>
+</figure>
+<p>続いて、<q cite="https://momdo.github.io/html/images.html#alt">代替テキストは、もし画像を含めることができなかったならば、何が書かれていただろうかを考慮することで記述することができる。</q>と。</p>
+<p>つまりこれは、仮にページ内のすべての画像が代替テキストに置き換わったとしても、ページがテキストのみのインターフェースとして成立するように代替テキストを記述すべしというわけです。</p>
+</section>
+<section id="8">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.008.png" width="1920" height="1080" alt="3本の横線が縦に等間隔に並べられたアイコンには「メニュー」という代替テキストを記述します。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://material.io/resources/icons/">Icons - Material Design</a></cite></p></div>
+</figcaption>
+</figure>
+<p>たとえばいわゆるハンバーガーボタンの代替テキストでは、アイコンの見た目について記述しようとすると「ハンバーガーボタン」とか「3本の横線」のような表現が思い浮かびます。ですが<em>テキストとして画像の目的を表現する</em>と考えると、ハンバーガーボタンはメニューを開くボタンなので代替テキストは「メニュー」になります。</p>
+</section>
+<section id="9">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.009.png" width="1920" height="1080" alt="プラス記号のアイコンには「追加」という代替テキストを記述します。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://material.io/resources/icons/">Icons - Material Design</a></cite></p></div>
+</figcaption>
+</figure>
+<p>プラス記号のアイコンではどうでしょうか。これもアイコンだけを見て考えると「プラス」のような表現になりそうなところですが、ハンバーガーボタンのように機能に着目して考えると、このアイコンはデータを追加するボタンに使われると仮定して「追加」がよさそうです。</p>
+</section>
+<section id="10">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.010.png" width="1920" height="1080" alt="ペンのアイコンには「編集」という代替テキストを記述します。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://material.io/resources/icons/">Icons - Material Design</a></cite></p></div>
+</figcaption>
+</figure>
+<p>ペンのアイコンではどうでしょう。これも機能について考えると「編集」辺りでしょうか。</p>
+</section>
+<section id="11">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.011.png" width="1920" height="1080" alt="海の写真では代替テキストに何を記述すればよいのでしょうか。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://unsplash.com/photos/IZ01rjX0XQA">Ocean, sea, water and sky | HD photo by Thomas Vimare (@vimarethomas) on Unsplash</a></cite></p></div>
+</figcaption>
+</figure>
+<p>それでは、これまでのアイコンとは違って「海の写真」を掲載する場合にはどうすればよいでしょうか。</p>
+<p>これまでアイコンの代替テキストを記述する際には、アイコン自体の見え方よりもアイコンを利用した目的に着目していました。実は代替テキストは画像だけでなく、その画像がどのような文脈で使用されているかを知らなければ考えられません。</p>
+<p>代替テキストにおいてはむしろ、画像自体の見た目よりも、サイトの提供者が画像を利用した目的や画像に期待する機能を表現します。</p>
+</section>
+<section id="12">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.012.png" width="1920" height="1080" alt="ブログ記事中に登場するウェブページのレイアウトの図解には次の代替テキストが設定されている。「『ページ』がアートボード全体を指しているのに対して、コンテナはその中のコンテンツ全体を取り囲みます。コンテナの外側には余白ができます。」。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://standard.shiftbrain.com/blog/the-gap-between-design-and-implementation-in-responsive-design">レスポンシブデザインに見るデザインカンプと実装との溝 - シフトブレイン／スタンダードデザインユニット</a></cite></p></div>
+</figcaption>
+</figure>
+<p>最近私がブログ記事に掲載した画像には代替テキストとして、<q>『ページ』がアートボード全体を指しているのに対して、コンテナはその中のコンテンツ全体を取り囲みます。コンテナの外側には余白ができます。</q>というほぼ記事の段落さながらな内容を設定しています。</p>
+<p>これは記事中に登場する画像なので、その前後の文脈に沿ってこの画像に期待する機能を表現しています。そうすれば仮に画像が表示されなくても、画像の利用で意図した役割を代替テキストに担わせられます。</p>
+</section>
+<section id="13">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.013.png" width="1920" height="1080" alt="我々は思考とその伝達のためにイメージを言葉へとエンコードする。受け手は、理解のために言葉をイメージへとデコードする。視覚化された情報がわかりやすいのは、デコードがすでに済んでいるからだ。視覚デザインとは、理解のプロセスを情報の送り手側に移動する試みである。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://twitter.com/manabuueno/status/1144958718380924930">Manabu UenoさんはTwitterを使っています: 「我々は思考とその伝達のためにイメージを言葉へとエンコードする。受け手は、理解のために言葉をイメージへとデコードする。視覚化された情報がわかりやすいのは、デコードがすでに済んでいるからだ。視覚デザインとは、理解のプロセスを情報の送り手側に移動する試みである。 https://t.co/s0GI1nyWQy」 / Twitter</a></cite></p></div>
+</figcaption>
+</figure>
+<p>人と人とがコミュニケーションするとき、情報の発信者はまず受信者にとって知覚可能な何かしらの表現をしています。発信者の頭の中にある考えをそのまま受信者の頭の中にも複製するようなことはできませんから、前提としてお互いに認識できる形に起こす必要があります。</p>
+<p>日本語や英語のような自然言語によるコミュニケーションでは、受信者は、発信者が形にした言葉を手掛かりにして対応するイメージへ変換する作業を行なっています。</p>
+<p>一方で自然言語でなく視覚化された情報の場合、人の理解の形に近いイメージがそのまま表現されているため、受信者の理解の負担が軽減されます。</p>
+</section>
+<section id="14">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.014.png" width="1920" height="1080" alt="記号の伝達においては、発信者がまず「コード」を参照しながら「伝達内容」を「メッセージ」として記号化し、受信者は「コード」を参照しながら「メッセージ」を解読するという経路で「伝達内容」が伝えられます。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://www.amazon.co.jp/dp/4004202582">池上嘉彦『記号論への招待』</a></cite></p>
+<p>「コード」は言語における「辞書」や「文法」のようなもの</p></div>
+</figcaption>
+</figure>
+<p>『記号論への招待』によれば、発信者は「伝達内容」をお互いの共通認識に沿った形式を意識しながら知覚可能な「メッセージ」に変換し、受信者はその「メッセージ」の解読によって発信者の「伝達内容」にたどり着きます。</p>
+<p>画像および代替テキストはこの中の「メッセージ」に位置付けられます。そしてHTMLの仕様に基づけば、画像およびその画像に対応する代替テキストは、<em>メッセージとしての形は違えど共通の「伝達内容」を伝えるもの</em>です。</p>
+<p>このメッセージをもう少し馴染みのある言葉に置き換えてみると「インターフェース」であり、つまり代替テキストは画像の「<strong>代替インターフェース</strong>」であるとも言えます。</p>
+</section>
+<section id="15">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.015.png" width="1920" height="1080" alt="ブラウザはまずHTMLからDOMツリーを構築し、視覚的なUIを描画するのと並行してアクセシビリティツリーへの変換を行います。支援技術はネイティブのAPIを介してアクセシビリティツリーを読み取り、情報がユーザーに届けられます。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="http://wicg.github.io/aom/demos/#7">Accessibility on the web § Accessibility Object Model</a></cite></p></div>
+</figcaption>
+</figure>
+<p>アクセシビリティにおいては、実はこの「代替」の発想が画像だけに限らずHTMLのページ全体に適用されています。</p>
+<p>ブラウザは目に見える画面を描画する前にHTMLをDOMツリーに変換していますが、同時にそのDOMツリーから「アクセシビリティツリー」と呼ばれるものの構築も行なっています。</p>
+<p>スクリーンリーダーなどの支援技術は、プラットフォームが提供する「アクセシビリティAPI」を介してこのアクセシビリティツリーとやり取りします。</p>
+<p>支援技術のユーザーにとってはこのアクセシビリティツリーこそがインターフェースだと言えます。</p>
+</section>
+<section id="16">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.016.png" width="1920" height="1080" alt="DOMツリーではいくつもの要素で表現されていた木構造が、アクセシビリティツリーにはその一部しか引き継がれていません。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>Chromeが形成したアクセシビリティツリーをDevToolsで検証しているスクリーンショット</p></div>
+</figcaption>
+</figure>
+<p>アクセシビリティツリーは、HTMLが「WAI-ARIA」というHTMLに関連する仕様（およびブラウザの独自仕様）に基づいて解釈された結果です。</p>
+<p>たとえば<code>&lt;div&gt;</code>要素はアクセシビリティツリーにおいては実質存在しないような扱いになっています。</p>
+<p>HTMLにはセマンティクスと呼ばれる概念があり、これは仕様に基づいて機械が解釈可能な「意味」を指します。</p>
+<p>HTMLにおいてもWAI-ARIAにおいても<code>&lt;div&gt;</code>要素はこの「意味」を持ちません。</p>
+<p>代わりに<code>main</code>・<code>article</code>・<code>heading</code>のようにWAI-ARIAとして意味のある要素は、HTMLから引き継がれてアクセシビリティツリーに反映されます。</p>
+<p>アクセシビリティツリーは目に見える画面とは関係なく構築されるので、支援技術のユーザーにページの意味を伝えるためには、視覚的な表現とは別に制作者は機械にとって解釈可能な意味も表現する必要があります。</p>
+<p>なぜこのように視覚的と機械のためとで二重に表現をしなければならないのかというと、視覚的な情報は広い層のユーザーにとってアクセシブルなものではないからです。</p>
+<p>たとえば全盲のユーザーが、スクリーンリーダーなどを用いずに何かしらの技術によって視覚に相当する感覚を得られれば理想的ですが、今のところ現実的ではないようです。また視覚的な表現から機械がよしなに意味を解釈してくれてもよさそうですが、それも精度の問題があります。</p>
+<p>そのためウェブアクセシビリティでは、ある情報をユーザーにとって知覚可能な別の形で代替することによって、特定の感覚器官だけに頼らず情報にアクセスできるようにするアプローチをとります。</p>
+<p>スクリーンリーダーはあらゆる情報表現を「言葉による読み上げ」で代替します。</p>
+<p>ウェブページから視覚的に情報を得るとき、目で文字を読むほかに、要素の形・大きさ・色・要素同士の空間的な関係性などを知覚してその意味を理解したりしていますが、スクリーンリーダーはそれらすべてを言葉として表現しなければなりません。</p>
+<p>大きい文字がページの先頭に配置されていたりすればそれがコンテンツの見出しであるというようなことはなんとなくわかりますが、スクリーンリーダーにとってはそれだけでは他の文字との違いがわかりません。</p>
+<p>そこで見出しを表現するための<code>&lt;h1&gt;</code>要素を利用すれば、その文字は見出しであるという意味を与えられて、スクリーンリーダーでも与えられた意味に基づいて「見出し」などと読み上げることができます。</p>
+<p>このようなHTMLの意味とページの見た目を区別する考え方は、「文書構造」と「プレゼンテーション」を分離させるというCSSのコンセプトに関係しています。</p>
+</section>
+<section id="17">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.017.png" width="1920" height="1080" alt="『CSS Zen Garden』には多様なデザインのページが大量に掲載されています。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="http://www.mezzoblue.com/zengarden/alldesigns/">mezzoblue § css Zen Garden Design List</a></cite></p></div>
+</figcaption>
+</figure>
+<p>『CSS Zen Garden』は200を超える数の非常に多様なデザインのウェブページを掲載していますが、実はすべてのページがまったく同じ構造のHTMLからできています。その中で唯一、読み込んでいるCSSの内容だけが異なっています。</p>
+<p>見た目にはこれほどの違いがあっても、アクセシビリティツリーの内容はどのページにも違いがありません。</p>
+<p>つまりHTMLは性質として、目に見える意味を表現するというよりも、制作者がどのような意味を持たせたいかを先行にして記述されます。同時にHTMLは、HTMLとして表現できる意味に基づいて記述していくしかないので、HTMLとして画面を表現することはある考え方をHTMLの世界観に基づいて捉え直すことでもあります。</p>
+<p>そのためHTMLで表現できない意味も必然的に存在します。</p>
+</section>
+<section id="18">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.018.png" width="1920" height="1080" alt="『Material Design』では「Buttons」というページで、3段階に分かれたボタンの視覚表現の階層構造や、隣接したボタン同士がどのように階層構造を表現するかについて示しています。" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://material.io/components/buttons/">Buttons - Material Design</a></cite></p></div>
+</figcaption>
+</figure>
+<p>『Material Design』のガイドラインでは、ボタン同士が並ぶときに、どれが重要なボタンかを区別できるよう視覚的に優先度付けすることについて書いています。</p>
+<p>これに従うと、隣接するボタン同士では異なる意味が視覚的には表現されるわけですが、HTMLとしてはどちらも同じマークアップになってしまいます。</p>
+<p>これは「CSSという視覚的なレイヤーで表現されるべき意味」であると理解することもできますが、ではどのような基準をもってしてHTMLとの責務を分離させているのか明確には言い表しづらいところではあります。</p>
+<p>また仮にHTMLで表現できる意味の数が大量に増えたとしても、画面から視覚的に感じられる意味と同じように代替として機能するかというとそうではありません。</p>
+<p>なぜなら「見出し」のような制作者にとっては極めて基本的な要素であっても、一般のユーザーが要素に「見出し」のような名前がついているということまで知っているのは稀だからです。</p>
+<p>ページを視覚的に理解しているユーザーであれば、要素の名前を知らずとも見た目の感じだけでなんとなく意味を理解できますが、スクリーンリーダーではUI要素の種類がそのまま読み上げられているような状態になるので、たとえば一般ユーザーに要素を識別してもらうために口頭で「パンくずリスト」とか「カルーセル」とか「アコーディオン」とか直接伝えているようなものです。</p>
+<p>結局、すべてを言葉として表現する時点でどうしても無理が生まれてきます。</p>
+<p>画像と代替テキストの関係性についても、本当の意味で同じ意味を伝えることは不可能です。</p>
+<p>代替テキストは制作者側の目的に沿って記述するわけですが、もちろん同じ画像を見たときの感じ方は人によって千差万別で、制作者の意図を超えた印象を受け取られていることも普通です。どうしても特定の感覚器官からしか得られない体験があるのです。</p>
+<p>それでも、やはり言葉にしなければ伝えられないという制約は超えられません。</p>
+<p>だからこの代替というアプローチに向き合ったり、「HTMLとCSSのような分離し切れないもの」をどうにか分離して、完全な状態でなくても情報を伝えられるような層を作ると考える必要があります。</p>
+</section>
+<section id="19">
+<figure class="stack -small">
+<div class="center"><img src="/meanings-of-the-alternative/assets/meanings-of-the-alternative.019.png" width="1920" height="1080" alt="「コンテンツ→マークアップ→CSS／この順番で、常に、永遠に。」" decoding="async" loading="lazy"></div>
+<figcaption class="center -readable">
+<div class="stack -small"><p>&mdash; <cite><a href="https://twitter.com/heydonworks/status/892728783664549888">@heydon@mastodon.socialさんはTwitterを使っています: 「Content -&gt; Markup -&gt; CSS In that order, always, forever.」 / Twitter</a></cite></p></div>
+</figcaption>
+</figure>
+<p>これについて私がもっともよい解決策だと考えているのが、HTMLとCSSとの関心を分離しやすいようにHTMLの世界観に基づいて素直に作ることです。</p>
+<p>最終的な描画結果だけをありきにしてページをデザインしてしまうと、HTMLはそこから逆算するような形で書くしかなく、するとHTMLで表現できる文書構造として無理が出てきて、「代替のインターフェース」としてもユーザーにとって扱いづらくなります。</p>
+<p>実装のフェーズでは普通CSSよりも先にHTMLを書きます。これはCSSが性質としてHTMLの構造に依存するため、CSSから書こうとすると不自然でやりにくいためです。CSSより先にHTMLがある方が自然に考えられます。</p>
+<p>しかしほとんどのワークフローではデザインカンプというCSSの<em>当て</em>になるものが実装の前に完成しています。HTMLは後からついてくる“ついで”のような立ち位置です。</p>
+<p>「代替」とは言葉の通り代わりのものですが、同時にある対象に見合うものです。私たちが作っているものは本当に代替たり得るのか、よく考えてみる必要があります。</p>
+</section>
+</main></div></body></html>

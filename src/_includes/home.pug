@@ -1,0 +1,34 @@
+- const { url, slug } = _universalFilters
+
+doctype html
+html(lang=lang)
+  head(prefix="og: http://ogp.me/ns#")
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover")
+    title=title
+    meta(name="description" content=description)
+    meta(name="twitter:card" content="summary_large_image")
+    meta(property="og:title" content=title)
+    meta(property="og:type" content="article")
+    meta(property="og:image" content=`${origin}${url(`/assets/${pkg.name}.001.png`)}`)
+    meta(property="og:url" content=`${origin}${url(page.url)}`)
+    meta(property="og:description" content=description)
+    meta(property="og:locale" content=`${lang}_${region}`)
+    link(rel="canonical" href=`${origin}${url(page.url)}`)
+    link(rel="stylesheet" href=url('/assets/main.css'))
+
+  body
+    .stack.-xlarge
+      .stack.-large
+        header.center
+          .stack.-small
+            p 社内発表（#[time(datetime="2018-09-10") 2019年9月10日]）
+            h1=title
+            p=description
+
+        footer.center
+          address
+            | 発表者：
+            a(href="https://yuheiy.com/" rel="author") 安田祐平
+
+      main.stack.-xlarge!=content
