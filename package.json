@@ -5,8 +5,7 @@
     "prestart": "npm run clean",
     "start": "eleventy --serve --quiet",
     "prebuild": "npm run clean",
-    "build": "eleventy",
-    "postbuild": "rm -rf docs/_eleventy_redirect/"
+    "build": "eleventy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.9.0",
