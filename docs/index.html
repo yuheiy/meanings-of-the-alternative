@@ -176,6 +176,7 @@
 </figure>
 <p>『CSS Zen Garden』は200を超える数の非常に多様なデザインのウェブページを掲載していますが、実はすべてのページがまったく同じ構造のHTMLからできています。その中で唯一、読み込んでいるCSSの内容だけが異なっています。</p>
 <p>見た目にはこれほどの違いがあっても、アクセシビリティツリーの内容はどのページにも違いがありません。</p>
+<p>（正確には、<em>CSSはアクセシビリティツリーに影響します</em>。標準としての仕様では、<a href="https://w3c.github.io/aria/#tree_exclusion"><code>display: none</code>・<code>visibility: hidden</code>が指定されている要素はアクセシビリティツリーから除外される</a>と言及されています。加えて実装によっては、<a href="https://developer.paciellogroup.com/blog/2018/03/short-note-on-what-css-display-properties-do-to-table-semantics/"><code>display</code>プロパティとして<code>table</code>以外の値を指定した<code>table</code>要素が<code>table</code>と見なされない</a>。あるいは逆に<a href="https://www.456bereastreet.com/archive/201110/using_displaytable_has_semantic_effects_in_some_screen_readers/"><code>display: table</code>を指定した要素が<code>table</code>と見なされる</a>。また<a href="https://unfetteredthoughts.net/2017/09/26/voiceover-and-list-style-type-none/"><code>list-style-type: none</code>を指定した<code>ol</code>・<code>ul</code>要素が<code>list</code>と見なされない</a>、というような挙動の違いもあります。）</p>
 <p>つまりHTMLは性質として、目に見える意味を表現するというよりも、制作者がどのような意味を持たせたいかを先行にして記述されます。同時にHTMLは、HTMLとして表現できる意味に基づいて記述していくしかないので、HTMLとして画面を表現することはある考え方をHTMLの世界観に基づいて捉え直すことでもあります。</p>
 <p>そのためHTMLで表現できない意味も必然的に存在します。</p>
 </section>

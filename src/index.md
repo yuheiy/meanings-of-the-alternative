@@ -234,6 +234,8 @@ HTMLにおいてもWAI-ARIAにおいても`<div>`要素はこの「意味」を�
 
 見た目にはこれほどの違いがあっても、アクセシビリティツリーの内容はどのページにも違いがありません。
 
+（正確には、*CSSはアクセシビリティツリーに影響します*。標準としての仕様では、[`display: none`・`visibility: hidden`が指定されている要素はアクセシビリティツリーから除外される](https://w3c.github.io/aria/#tree_exclusion)と言及されています。加えて実装によっては、[`display`プロパティとして`table`以外の値を指定した`table`要素が`table`と見なされない](https://developer.paciellogroup.com/blog/2018/03/short-note-on-what-css-display-properties-do-to-table-semantics/)。あるいは逆に[`display: table`を指定した要素が`table`と見なされる](https://www.456bereastreet.com/archive/201110/using_displaytable_has_semantic_effects_in_some_screen_readers/)。また[`list-style-type: none`を指定した`ol`・`ul`要素が`list`と見なされない](https://unfetteredthoughts.net/2017/09/26/voiceover-and-list-style-type-none/)、というような挙動の違いもあります。）
+
 つまりHTMLは性質として、目に見える意味を表現するというよりも、制作者がどのような意味を持たせたいかを先行にして記述されます。同時にHTMLは、HTMLとして表現できる意味に基づいて記述していくしかないので、HTMLとして画面を表現することはある考え方をHTMLの世界観に基づいて捉え直すことでもあります。
 
 そのためHTMLで表現できない意味も必然的に存在します。
